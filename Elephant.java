@@ -9,6 +9,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Elephant extends Actor
 {
     GreenfootSound elephantSound = new GreenfootSound("elephant-trumpets-growls-6047.mp3");
+    GreenfootImage idle = new GreenfootImage("images/elephant_idle_idle0.png");
+    
+    public Elephant()
+    {
+        setImage(idle);
+    }
     public void act()
     {
         if(Greenfoot.isKeyDown("left"))
@@ -29,6 +35,7 @@ public class Elephant extends Actor
         removeTouching(Apple.class);
         MyWorld world = (MyWorld) getWorld();
         world.createApple();
+        elephantSound.play();
     }
 }
 
