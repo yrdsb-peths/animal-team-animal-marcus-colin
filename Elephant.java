@@ -36,7 +36,7 @@ public class Elephant extends Actor
     int imageIndex = 0;
     public void animateElephant()
     {
-        if(animationTimer.millisElapsed() < 50)
+        if(animationTimer.millisElapsed() < 100)
         {
             return;
         }
@@ -69,17 +69,23 @@ public class Elephant extends Actor
             facing = "right";
         }
         
-        removeTouching(Apple.class);
+        eat();
         
         animateElephant();
     }
     
     public void eat()
     {
-        removeTouching(Apple.class);
-        MyWorld world = (MyWorld) getWorld();
-        world.createApple();
-        elephantSound.play();
+        if(isTouching(Apple.class))
+        {
+            removeTouching(Apple.class);
+            MyWorld world = (MyWorld) getWorld();
+            world.createApple();
+            elephantSound.play();
+            world.increaseScore();
+            
+        }
+
     }
 }
 
