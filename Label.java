@@ -1,94 +1,109 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-
 /**
  * A Label class that allows you to display a textual value on screen.
  * 
- * The Label is an actor, so you will need to create it, and then add it to the world
- * in Greenfoot.  If you keep a reference to the Label then you can change the text it
- * displays.  
- *
+ * The Label is an actor, so you can add it to a world just like any other actor.
+ * You can change the text, font size, and colors during the game.
+ * 
+ * This is a useful utility class for displaying scores, messages, or instructions.
+ * 
  * @author Amjad Altadmri 
  * @version 1.1
  */
 public class Label extends Actor
 {
+    // Text to display
     private String value;
-    private int fontSize;
-    private Color lineColor = Color.BLACK;
-    private Color fillColor = Color.WHITE;
-    
-    private static final Color transparent = new Color(0,0,0,0);
 
-    
+    // Font size of the text
+    private int fontSize;
+
+    // Border (outline) color of the text
+    private Color lineColor = Color.BLACK;
+
+    // Fill (inside) color of the text
+    private Color fillColor = Color.WHITE;
+
+    // Transparent background
+    private static final Color transparent = new Color(0, 0, 0, 0);
+
     /**
-     * Create a new label, initialise it with the int value to be shown and the font size 
+     * Create a new label initialized with an integer value and font size.
+     * Converts the integer to a string internally.
+     * 
+     * @param value The number to display
+     * @param fontSize The size of the font
      */
     public Label(int value, int fontSize)
     {
         this(Integer.toString(value), fontSize);
     }
-    
+
     /**
-     * Create a new label, initialise it with the needed text and the font size 
+     * Create a new label initialized with a string and font size.
+     * 
+     * @param value The text to display
+     * @param fontSize The size of the font
      */
     public Label(String value, int fontSize)
     {
         this.value = value;
         this.fontSize = fontSize;
-        updateImage();
+        updateImage();  // Draw the initial label image
     }
 
     /**
-     * Sets the value  as text
+     * Set the label to a new string value.
      * 
-     * @param value the text to be show
+     * @param value The new text to display
      */
     public void setValue(String value)
     {
         this.value = value;
-        updateImage();
+        updateImage();  // Refresh the image with new text
     }
-    
+
     /**
-     * Sets the value as integer
+     * Set the label to a new integer value.
      * 
-     * @param value the value to be show
+     * @param value The new number to display
      */
     public void setValue(int value)
     {
         this.value = Integer.toString(value);
-        updateImage();
+        updateImage();  // Refresh the image with new text
     }
-    
+
     /**
-     * Sets the line color of the text
+     * Set the outline (border) color of the text.
      * 
-     * @param lineColor the line color of the text
+     * @param lineColor The new outline color
      */
     public void setLineColor(Color lineColor)
     {
         this.lineColor = lineColor;
-        updateImage();
+        updateImage();  // Refresh image with new color
     }
-    
+
     /**
-     * Sets the fill color of the text
+     * Set the fill (main) color of the text.
      * 
-     * @param fillColor the fill color of the text
+     * @param fillColor The new fill color
      */
     public void setFillColor(Color fillColor)
     {
         this.fillColor = fillColor;
-        updateImage();
+        updateImage();  // Refresh image with new color
     }
-    
 
     /**
-     * Update the image on screen to show the current value.
+     * Redraw the label with the current value, font size, and colors.
+     * This is called internally whenever the label needs to be updated.
      */
     private void updateImage()
     {
+        // Creates a new GreenfootImage with transparent background, fill color, and line color
         setImage(new GreenfootImage(value, fontSize, fillColor, transparent, lineColor));
     }
 }
