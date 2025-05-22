@@ -54,12 +54,12 @@ public class MyWorld extends World {
      * Spawns a new apple at a random x-position at the top of the screen.
      * The apple's speed increases with the level.
      */
-    public void createApple() {
-        Apple apple = new Apple();     // Create a new Apple object
-        apple.setSpeed(level);         // Set its speed based on the current level
-        int x = Greenfoot.getRandomNumber(600);  // Random x-position
-        int y = 0;                     // Start at the top of the screen
-        addObject(apple, x, y);        // Add the apple to the world
-    }
+        public void createApple() {
+            Apple apple = new Apple();     // Create a new Apple object
+            apple.setSpeed(level);         // Set its speed based on the current level
+            int x = Greenfoot.getRandomNumber(600);  // Random x-position
+            int y = 0;                     // Start at the top of the screen
+            addObject(apple, x, y);        // Add the apple to the world
+        }
 }
 
